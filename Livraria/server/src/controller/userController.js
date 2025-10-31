@@ -20,11 +20,10 @@ route.get("/:nameFound", async (request, response) => {
 
 route.post("/", async (request, response) => {
    //const {name, email, password, typeUser} = request.body;
-   // const {data} = request.body;
-   // console.log(data);
-   // data.forEach(async element => 
-   // {
-   //    const {name, email, password, typeUser} = element;
+   const {data} = request.body;
+
+   data.forEach(async element => {
+      const {name, email, password, typeUser} = element;
 
       if (name.length < 3) {
          return response.status(400).send({"response": "O campo 'name' deve ter pelo menos três caracteres."});
@@ -44,14 +43,16 @@ route.post("/", async (request, response) => {
 
       try {
          const newUser = userRepository.create({name, email, password, typeUser});
-         // await userRepository.save(newUser);
-         userRepository.save(newUser);
-         return response.status(201).send({"message": "Usuário cadastrado com sucesso."});
+         await userRepository.save(newUser);
+         
       } catch (err) {
          console.log(err);
          return response.status(500).send("Erro.");
       }
    });
+
+   return response.status(201).send({"message": "Usuário cadastrado com sucesso."});
+});
 
 route.put('/:id', async (request, response) => {
     const {name, password, email, typeUser} = request.body;

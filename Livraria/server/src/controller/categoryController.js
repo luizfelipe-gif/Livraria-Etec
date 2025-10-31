@@ -3,7 +3,6 @@ import Category         from "../entities/category.js";
 import {AppDataSource}  from "../database/data-source.js";
 import {Like, IsNull}   from "typeorm";
 
-
 const route = express.Router();
 const categoryRepository = AppDataSource.getRepository(Category);
 

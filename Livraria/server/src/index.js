@@ -10,9 +10,9 @@ server.use(cors());
 server.use("/", routes);
 
 AppDataSource.initialize().then(async () => {
-    console.log("Banco de dados conectado!");
+   console.log("Banco de dados conectado!");
 
-    server.listen(3333, () => { // Porta 3333 se refere ao Express
-        console.log("O servidor irá funcionar!");
-    });
+   server.listen(3333, () => {
+      console.log("O servidor irá funcionar!");
+   });
 });

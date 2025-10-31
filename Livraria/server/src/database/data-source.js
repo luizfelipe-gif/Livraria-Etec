@@ -5,7 +5,7 @@ const AppDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
     username: "root",
-    port: 3306, // Porta 3306 se refere ao MySQL
+    port: 3306,
     password: "",
     database: "library2025",
     entities: ["src/entities/*.js"],
