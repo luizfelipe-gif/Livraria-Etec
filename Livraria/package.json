@@ -1,13 +1,17 @@
 {
-  "name": "livraria",
-  "private": true,
-  "version": "0.0.0",
+  "name": "Livraria-Frontend",
+  "version": "v1.0.0",
+  "license": "MIT",
   "type": "module",
+  "author": "Luiz",
+  "description": "Projeto de uma Livraria integrando Frontend (React), Backend (NodeJS e ExpressJS) e Banco de Dados relacional (MySQL), além de ferramentas complementares (JWT).",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "npm install && npm audit fix && code . && start cmder /m && npm run dev"
+
   },
   "dependencies": {
     "axios": "^1.11.0",

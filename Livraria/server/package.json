@@ -1,11 +1,14 @@
 {
-  "name": "integracao-back-bd",
-  "version": "1.0.0",
+  "name": "Livraria-Backend",
   "main": "index.js",
+  "version": "1.0.0",
   "license": "MIT",
   "type": "module",
+  "author": "Luiz",
+  "description": "Backend do projeto de uma Livraria integrando Frontend (React), Backend (NodeJS e ExpressJS) e Banco de Dados relacional (MySQL), além de ferramentas complementares (JWT).",
+
   "scripts": {
-    "fonuncia": "nodemon src/index.js",
+    "start": "npm install && npm audit fix && nodemon src/index.js",
     "generate_migration": "npx typeorm -d ./src/database/data-source.js migration:generate ./src/database/migrations/db --outputJs",
     "run_migrations": "npx typeorm -d ./src/database/data-source.js migration:run"
   },
