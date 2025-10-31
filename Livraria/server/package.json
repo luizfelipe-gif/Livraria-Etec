@@ -1,7 +1,7 @@
 {
   "name": "Livraria-Backend",
   "main": "index.js",
-  "version": "v1.0.1",
+  "version": "v1.1.0",
   "license": "MIT",
   "type": "module",
   "author": "Luiz",
