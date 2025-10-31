@@ -29,8 +29,7 @@ function App() {
                <Route path="/register-books"    element={<ProtectedRouter> <RegisterBook />  </ProtectedRouter>}/>
             </Routes>
          </Router>
-         <ToastContainer 
-         />
+         <ToastContainer />
       </>
    )    
 }
