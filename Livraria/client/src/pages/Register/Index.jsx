@@ -1,10 +1,8 @@
-import { useState } from 'react' // useState > Criação de variavel dinamica que será atualizada durante o projeto
-import "./Login.css"
+import { useState, useNavigate } from 'react' // useState > Criação de variavel dinamica que será atualizada durante o projeto
 import api from "../../services/api"
-import { useNavigate  } from "react-router-dom";
+import './Register.css'
 
-function Login() {
-   const navigate = useNavigate();
+function Register() {
    const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
 
@@ -14,32 +12,19 @@ function Login() {
       try {
          const payload = {email, password};
          const {data} = await api.post('/login', payload);
-         sessionStorage.setItem("token", data.token);
-         
-         toast.success('Login efetuado com sucesso', {
-            position: 'top-right',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-         });
-         
-         return navigate("/home");
-
-         } catch(err) {
-            alert(err.response.data.response)
-         }
+         alert(data.response)
+         navigate("/cadastro");
+      } catch(err) {
+         alert(err.response.data.response)
       }
+   }
 
    return (
       <content>
          <div className='content'>
             <form onSubmit={handleLogin}>
                <div className='campos'>
-                  <h1>Login</h1>
+                  <h1>Cadastro</h1>
                   <div className='grupos'>
                      <label className='campos'>Email:</label>
                      <input className='campos' type="email" placeholder='E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}></input>
@@ -53,10 +38,11 @@ function Login() {
                   </div>
                </div>
             </form>
-         <span>Não possui cadastro?</span> <a href='/register'> Fazer cadastro</a>
+         <span>Já possui cadastro?  </span> <a href='/login'> Faça login</a>
+
          </div>
       </content>
    )
 }
 
-export default Login;
+export default Register;

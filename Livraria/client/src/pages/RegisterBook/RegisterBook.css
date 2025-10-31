@@ -1,0 +1,21 @@
+.content {
+  justify-content: center;
+  align-items: center;
+}
+
+div {
+  margin: 10px;
+}
+
+.campos {
+   display: flex;
+   justify-content: space-between;
+}
+
+label {
+   align-self: flex-start;
+}
+
+input {
+   margin: auto;
+}

@@ -1,0 +1,17 @@
+.content {
+  justify-content: center;
+  align-items: center;
+}
+
+.campos {
+   display: flex;
+   justify-content: space-between;
+}
+
+label {
+   align-self: flex-start;
+}
+
+input {
+   margin: auto;
+}
