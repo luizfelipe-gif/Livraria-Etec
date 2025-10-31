@@ -5,9 +5,9 @@ import { useNavigate  } from "react-router-dom";
 function ListBooks() {
 
    return (
-      <content>
+      <main>
          <h1>ListBooks</h1>
-      </content>
+      </main>
    )
 }
 

@@ -5,9 +5,9 @@ import { useNavigate  } from "react-router-dom";
 function RegisterBook() {
 
    return (
-      <content>
+      <main>
          <h1>RegisterBook</h1>
-      </content>
+      </main>
    )
 }
 

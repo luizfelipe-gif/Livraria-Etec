@@ -20,4 +20,4 @@ function isAuthenticated() {
    return !!getUser();
 }
 
-export default { isAuthenticated, getUser };
+export { isAuthenticated, getUser };

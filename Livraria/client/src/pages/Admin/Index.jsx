@@ -5,9 +5,9 @@ import { useNavigate  } from "react-router-dom";
 function Admin() {
 
    return (
-      <content>
+      <main>
          <h1>Admin</h1>
-      </content>
+      </main>
    )
 }
 

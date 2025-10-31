@@ -5,9 +5,9 @@ import { useNavigate  } from "react-router-dom";
 function Home() {
 
    return (
-      <content>
+      <main>
          <h1>Home</h1>
-      </content>
+      </main>
    )
 }
 

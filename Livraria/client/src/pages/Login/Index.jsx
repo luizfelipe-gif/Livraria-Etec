@@ -1,7 +1,8 @@
 import { useState } from 'react' // useState > Criação de variavel dinamica que será atualizada durante o projeto
 import "./Login.css"
 import api from "../../services/api"
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function Login() {
    const navigate = useNavigate();
@@ -26,16 +27,25 @@ function Login() {
             progress: undefined,
             theme: 'light',
          });
-         
          return navigate("/home");
 
-         } catch(err) {
-            alert(err.response.data.response)
+         } catch(error) {
+            toast.error(error.response.data.response + {
+               position: "top-right",
+               autoClose: 5000,
+               hideProgressBar: false,
+               closeOnClick: false,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "light",
+            });
+            console.log(error)
          }
       }
 
    return (
-      <content>
+      <main>
          <div className='content'>
             <form onSubmit={handleLogin}>
                <div className='campos'>
@@ -55,7 +65,7 @@ function Login() {
             </form>
          <span>Não possui cadastro?</span> <a href='/register'> Fazer cadastro</a>
          </div>
-      </content>
+      </main>
    )
 }
 

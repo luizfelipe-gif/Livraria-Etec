@@ -20,7 +20,7 @@ function Register() {
    }
 
    return (
-      <content>
+      <main>
          <div className='content'>
             <form onSubmit={handleLogin}>
                <div className='campos'>
@@ -41,7 +41,7 @@ function Register() {
          <span>Já possui cadastro?  </span> <a href='/login'> Faça login</a>
 
          </div>
-      </content>
+      </main>
    )
 }
 

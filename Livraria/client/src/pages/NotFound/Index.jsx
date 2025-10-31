@@ -5,9 +5,9 @@ import { useNavigate  } from "react-router-dom";
 function NotFound() {
 
    return (
-      <content>
+      <main>
          <h1>NotFound</h1>
-      </content>
+      </main>
    )
 }
 

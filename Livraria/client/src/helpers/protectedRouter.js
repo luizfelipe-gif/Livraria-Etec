@@ -1,6 +1,6 @@
 import { useEffect } from "react";
+import { getUser } from "./auth";
 import { useNavigate } from "react-router-dom";
-import getUser from './auth.js'
 
 function ProtectedRouter({children, roles}) {
    const navigate = useNavigate();
