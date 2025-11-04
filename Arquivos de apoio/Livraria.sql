@@ -9,6 +9,7 @@ select * from publisher;
 select * from book;
 select * from bookauthor;
 select * from profile;
+select * from migrations;
 
 INSERT INTO user(id, name, password, email, typeUser, createdAt, deletedAt) VALUES
 (1, 'Cicrano de tal', 'senha123', 'fulano@gmail.com', 'comum', '2025-05-18 16:42:20', NULL),
