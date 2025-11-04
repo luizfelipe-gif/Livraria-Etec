@@ -7,6 +7,9 @@ function Home() {
 
    return (
       <>
+         <head>
+            <title>Página Inicial - WikiLivros</title>
+         </head>
          <Header/>
          <main>
             <h1>conteudo</h1>

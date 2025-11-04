@@ -5,6 +5,7 @@
    width: 100%;
    height: 10vh;
    min-height: 80px;
+   font-size: 1.2rem;
 }
 
 
@@ -70,9 +71,19 @@
 
 .navbar-usuario {
    display: flex;
+   align-items: center;
+   text-align: center;
+   gap: 1vw;
+   height: 75%;
+   background-color: rgba(34, 42, 160, 0.1);
+   border-radius: 15px;
+   padding: 0 1vw;
 
    div {
       display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: 0 10px;
    }
 
    img {
