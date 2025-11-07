@@ -1,6 +1,6 @@
 {
   "name": "Livraria-Frontend",
-  "version": "v1.1.5",
+  "version": "v1.1.6",
   "license": "MIT",
   "type": "module",
   "author": "Luiz",
@@ -13,6 +13,7 @@
     "start": "npm install && npm audit fix && code . && start cmder /m && npm run dev"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.5",
     "axios": "^1.11.0",
     "bootstrap": "^5.3.8",

@@ -15,6 +15,7 @@ import ListBooks from "./pages/ListBooks"
 import Authors from "./pages/Authors"
 import Publishers from "./pages/Publishers"
 import NotFound from "./pages/NotFound"
+import UserUpdate from './pages/UserUpdate'
 
 function App() {
    return (
@@ -25,6 +26,7 @@ function App() {
                <Route path="/login"             element={<Login />}/>
                <Route path="/register"          element={<Register />}/>
                <Route path="/notfound"          element={<NotFound />}/>
+               <Route path="/UserUpdate"        element={<UserUpdate />}/>
                <Route path="/home"              element={<ProtectedRouter> <Home />          </ProtectedRouter>}/>
                <Route path="/admin"             element={<ProtectedRouter> <Admin />         </ProtectedRouter>}/>
                <Route path="/register-books"    element={<ProtectedRouter> <RegisterBook />  </ProtectedRouter>}/>

@@ -11,7 +11,7 @@ function Home() {
             <title>Página Inicial - WikiLivros</title>
          </head>
          <Header/>
-         <main>
+         <main className="main main-home">
             <h1>conteudo</h1>
          </main>
       </>

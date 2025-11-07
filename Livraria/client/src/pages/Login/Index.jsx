@@ -45,7 +45,7 @@ function Login() {
       }
 
    return (
-      <main>
+      <main className="main main-login">
          <div className='content'>
             <form onSubmit={handleLogin}>
                <div className='campos'>

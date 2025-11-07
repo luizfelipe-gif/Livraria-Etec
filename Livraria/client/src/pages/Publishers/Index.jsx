@@ -8,7 +8,7 @@ function Publishers() {
    return (
       <>
          <head>
-            <title>ListBooks</title>
+            <title>Publishers</title>
          </head>
          <Header/>
          <main>
