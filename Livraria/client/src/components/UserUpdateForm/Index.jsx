@@ -66,5 +66,14 @@ export default function UserUpdateForm() {
       }
    }
 
-
+   return (
+      <>
+         <form onSubmit={''}>
+            <input>Nome</input>
+            <input>Senha</input>
+            <input>Tipo de usuário</input>
+            <button>Alterar</button>
+         </form>
+      </>
+   );
 };

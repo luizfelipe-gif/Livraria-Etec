@@ -1,21 +1,21 @@
-import "./RegisterBook.css"
+import "./Publishers.css"
 import api from "../../services/api"
 import { useNavigate  } from "react-router-dom";
 import Header from "../../components/Header/"
 
-function RegisterBook() {
+function Publishers() {
 
    return (
       <>
          <head>
-            <title>RegisterBook</title>
+            <title>ListBooks</title>
          </head>
          <Header/>
          <main>
-            <h1>RegisterBook</h1>
+            <h1>Publishers</h1>
          </main>
       </>
    )
 }
 
-export default RegisterBook;
+export default Publishers;

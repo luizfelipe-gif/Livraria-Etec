@@ -10,8 +10,10 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Home from "./pages/Home"
 import Admin from "./pages/Admin"
-import ListBooks from "./pages/ListBooks"
 import RegisterBook from "./pages/RegisterBook"
+import ListBooks from "./pages/ListBooks"
+import Authors from "./pages/Authors"
+import Publishers from "./pages/Publishers"
 import NotFound from "./pages/NotFound"
 
 function App() {
@@ -25,8 +27,10 @@ function App() {
                <Route path="/notfound"          element={<NotFound />}/>
                <Route path="/home"              element={<ProtectedRouter> <Home />          </ProtectedRouter>}/>
                <Route path="/admin"             element={<ProtectedRouter> <Admin />         </ProtectedRouter>}/>
-               <Route path="/list-books"        element={<ProtectedRouter> <ListBooks />     </ProtectedRouter>}/>
                <Route path="/register-books"    element={<ProtectedRouter> <RegisterBook />  </ProtectedRouter>}/>
+               <Route path="/list-books"        element={<ProtectedRouter> <ListBooks />     </ProtectedRouter>}/>
+               <Route path="/authors"           element={<ProtectedRouter> <Authors />       </ProtectedRouter>}/>
+               <Route path="/publishers"        element={<ProtectedRouter> <Publishers />    </ProtectedRouter>}/>
             </Routes>
          </Router>
          <ToastContainer />
