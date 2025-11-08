@@ -16,7 +16,7 @@ function Header() {
          </div>
 
          <div className="navbar-categorias">
-            <div onClick={() => navigate("/authors")}>
+            <div onClick={() => navigate("/author")}>
                <img src="client/public/writer.svg"></img>
                <p>Autores</p>
             </div>
@@ -36,7 +36,7 @@ function Header() {
             </div>
          </div>
 
-         <div className="navbar-usuario" onClick={() => navigate("/UserUpdate")}>
+         <div className="navbar-usuario" onClick={() => navigate("/profile")}>
             <div onClick={''}>
                <img src="client/public/user_profile.svg"></img>
                <p>"nome usuario"</p>

@@ -1,0 +1,56 @@
+h1 {
+   margin: 2vh;
+   min-height: 15px;
+}
+
+.main-profile {
+   flex-direction: column;
+}
+
+.profile-form {
+   background-color: lightgray;
+   height: 60vh;
+   border-radius: 15px;
+   box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.profile-form {
+   display: flex;
+   justify-content: space-around;
+   width: 50vw;
+   max-width: 800px;
+   padding: 50px;
+}
+
+.profile-alterarFoto {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   gap: 10px;
+   height: 10vh;
+   width: 10vw;
+   border: 2px solid red;
+   padding: 50px;
+   
+   label {
+      border: 2px solid red;
+      width: 100%;
+      height: 100%;
+   }
+}
+
+.profile-image {
+   img {
+      width: 100%;
+      height: 100%;
+   }
+}
+
+.profile-inputs {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   width: 70%;
+}
