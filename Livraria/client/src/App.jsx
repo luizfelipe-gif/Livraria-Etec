@@ -12,10 +12,10 @@ import Home from "./pages/Home"
 import Admin from "./pages/Admin"
 import RegisterBook from "./pages/RegisterBook"
 import ListBooks from "./pages/ListBooks"
-import Authors from "./pages/Authors"
+import Author from "./pages/Author"
 import Publishers from "./pages/Publishers"
 import NotFound from "./pages/NotFound"
-import UserUpdate from './pages/UserUpdate'
+import Profile from './pages/Profile'
 
 function App() {
    return (
@@ -26,12 +26,12 @@ function App() {
                <Route path="/login"             element={<Login />}/>
                <Route path="/register"          element={<Register />}/>
                <Route path="/notfound"          element={<NotFound />}/>
-               <Route path="/UserUpdate"        element={<UserUpdate />}/>
+               <Route path="/profile"           element={<Profile />}/>
                <Route path="/home"              element={<ProtectedRouter> <Home />          </ProtectedRouter>}/>
                <Route path="/admin"             element={<ProtectedRouter> <Admin />         </ProtectedRouter>}/>
                <Route path="/register-books"    element={<ProtectedRouter> <RegisterBook />  </ProtectedRouter>}/>
                <Route path="/list-books"        element={<ProtectedRouter> <ListBooks />     </ProtectedRouter>}/>
-               <Route path="/authors"           element={<ProtectedRouter> <Authors />       </ProtectedRouter>}/>
+               <Route path="/author"            element={<ProtectedRouter> <Author />       </ProtectedRouter>}/>
                <Route path="/publishers"        element={<ProtectedRouter> <Publishers />    </ProtectedRouter>}/>
             </Routes>
          </Router>
