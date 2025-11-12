@@ -3,6 +3,7 @@ import "./Login.css"
 import api from "../../services/api"
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { TextField, Button } from '@mui/material';
 
 function Login() {
    const navigate = useNavigate();
@@ -18,11 +19,11 @@ function Login() {
          sessionStorage.setItem("token", data.token);
          
          toast.success('Login efetuado com sucesso', {
-            position: 'top-right',
-            autoClose: 2000,
+            position: 'bottom-right',
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: false,
-            pauseOnHover: true,
+            pauseOnHover: false,
             draggable: true,
             progress: undefined,
             theme: 'light',
@@ -45,25 +46,19 @@ function Login() {
       }
 
    return (
-      <main className="main main-login">
-         <div className='content'>
-            <form onSubmit={handleLogin}>
-               <div className='campos'>
-                  <h1>Login</h1>
-                  <div className='grupos'>
-                     <label className='campos'>Email:</label>
-                     <input className='campos' type="email" placeholder='E-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}></input>
-                  </div>
-                  <div className='grupos'>
-                     <label className='campos'>Senha:</label>
-                     <input className='campos' type="password" placeholder='Senha' value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
-                  </div>
-                  <div className='grupos'>
-                     <button className='campos'>Fazer Login  </button>
-                  </div>
+      <main className="main-login">
+         <div className='content-login'>
+            <div className='logo-login'>
+               <img className='form-image' src={'client/public/named_logo1.svg'}></img>
+            </div>
+            <form className='form-login' onSubmit={handleLogin}>
+               <div className='grupos'>
+                  <TextField variant="outlined" className='campos' type="email" placeholder='Digite o e-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}></TextField>
+                  <TextField variant="outlined" className='campos' type="password" placeholder='Digite a senha' value={password} onChange={(e) => {setPassword(e.target.value)}}></TextField>
+                  <Button type='submit' className='campos'>Entrar</Button>
                </div>
             </form>
-         <span>Não possui cadastro?</span> <a href='/register'> Fazer cadastro</a>
+         <span>Não possui cadastro? <a href='/register'>Fazer cadastro</a></span> 
          </div>
       </main>
    )
