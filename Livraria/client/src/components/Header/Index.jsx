@@ -1,12 +1,30 @@
 import './Header.css';
-import { useNavigate, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getUser } from '../../helpers/auth'
+import api from '../../services/api';
 
 function Header() {
    const navigate = useNavigate();
 
-   async function deslogar() {
-      sessionStorage.removeItem('token');
-   }
+   const [userData, setUserData] = useState({
+      user: '',
+      email: '',
+      typeUser: '',
+   });
+
+   useEffect(() => { // Revisar essa função pra obter os dados do usuário logado
+      async function getUserData() {
+         const loggedUser = getUser();
+         setUserData(loggedUser);
+   
+         console.log("loggedUser", loggedUser);
+         console.log("userData", userData);
+      };
+
+      getUserData();
+
+   }, []);
 
    return (
       <header className="header">
@@ -36,13 +54,13 @@ function Header() {
             </div>
          </div>
 
-         <div className="navbar-usuario" onClick={() => navigate("/profile")}>
-            <div onClick={''}>
+         <div className="navbar-usuario">
+            <div onClick={() => navigate("/profile")}>
                <img src="client/public/user_profile.svg"></img>
-               <p>"nome usuario"</p>
+               <p>{'nome usuario'}</p>
             </div>
 
-            <div onClick={deslogar}>
+            <div onClick={() => {sessionStorage.removeItem('token') || navigate("/login")}}>
                <img src="client/public/logout.svg"></img>
                <p>Sair</p>
             </div>

@@ -1,7 +1,7 @@
 import "./Profile.css"
 import api from "../../services/api"
 import { useEffect, useState } from "react"
-import { useNavigate  } from "react-router-dom";
+import { useNavigate, Link  } from "react-router-dom";
 import Header from "../../components/Header"
 import { TextField } from '@mui/material'
 import { Button } from 'react-bootstrap';
@@ -112,7 +112,15 @@ function Profile() {
       <>
          <Header/>
          <main className="main main-profile">
-            <h1>Alterar Cadastro</h1>
+
+
+            <div className="titulo">
+               {/* <p><Link to={-1}><img src="client/public/back.svg"/></Link></p> */}
+               <p>Alterar Cadastro</p>
+            </div>
+
+
+            
             <form className="profile-form" onSubmit={handleSubmit}>
                <div className="profile-alterarFoto">
                   <div className="profile-image" onClick={handlePhoto}>
