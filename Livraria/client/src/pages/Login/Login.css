@@ -22,21 +22,22 @@
    align-items: center;
    background-color: #f1f1f1;
    gap: 30px;
-   border: solid black 2px;
+   box-shadow: 0px 0px 50px 10px rgba(0, 28, 80, 0.6);
+   /* border: solid black 2px; */
    border-radius: 12px;
 
    a {
       text-decoration: none;
       color: #1e3d66;
    }
-
+   
    a:hover {
       color: black;
    }
 }
 
 .logo-login {
-   width: 35%;
+   width: 45%;
    height: 35%;
    
    .form-image {
@@ -50,9 +51,15 @@
    flex-direction: column;
    width: 70%;
 
+   input {
+      border: solid rgba(30, 61, 102, 0.4) 1px;
+   }
+   
    button {
       color: #1e3d66;
       font-weight: 600;
+      border: solid rgba(30, 61, 102, 0.4) 1px;
+
    }
 
    button:hover {

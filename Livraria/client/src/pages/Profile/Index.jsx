@@ -5,6 +5,7 @@ import { useNavigate, Link  } from "react-router-dom";
 import Header from "../../components/Header"
 import { TextField } from '@mui/material'
 import { Button } from 'react-bootstrap';
+import SVG_Back from '../../../public/back.svg'
 
 function Profile() {
    const [email, setEmail] = useState('');
@@ -112,11 +113,11 @@ function Profile() {
       <>
          <Header/>
          <main className="main main-profile">
-
-
-            <div className="titulo">
-               {/* <p><Link to={-1}><img src="client/public/back.svg"/></Link></p> */}
-               <p>Alterar Cadastro</p>
+            <div className="titulo centralizar">
+               <div className="grid centralizar">
+                  <Link to={-1}><img className="svg" src={SVG_Back}/></Link>
+                  <span>Alterar Cadastro</span>
+               </div>
             </div>
 
 
