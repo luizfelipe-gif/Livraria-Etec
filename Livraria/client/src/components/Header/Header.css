@@ -88,6 +88,10 @@
       align-items: center;
       cursor: pointer;
       padding: 0 10px;
+
+      .usuario {
+         margin-left: 5px;
+      }
    }
 
    img {

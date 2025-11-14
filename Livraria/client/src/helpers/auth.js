@@ -12,7 +12,8 @@ function getUser() {
       return decoded;
    } catch(err) {
       console.log(err);
-      return err;
+      sessionStorage.removeItem("token");
+      return null;
    }
 }
 

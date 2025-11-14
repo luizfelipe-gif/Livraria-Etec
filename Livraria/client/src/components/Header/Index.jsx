@@ -7,25 +7,19 @@ import api from '../../services/api';
 function Header() {
    const navigate = useNavigate();
 
-   const [userData, setUserData] = useState({
-      user: '',
-      email: '',
-      typeUser: '',
-   });
+   const [userData, setUserData] = useState(null);
 
    useEffect(() => { // Revisar essa função pra obter os dados do usuário logado
-      async function getUserData() {
+      function getUserData() {
          const loggedUser = getUser();
          setUserData(loggedUser);
    
          console.log("loggedUser", loggedUser);
-         console.log("userData", userData);
       };
-
       getUserData();
-
    }, []);
-
+   
+   console.log("userData", userData);
    return (
       <header className="header">
          <div className="navbar-titulo categoria"  onClick={() => navigate("/home")}>
@@ -57,7 +51,7 @@ function Header() {
          <div className="navbar-usuario">
             <div onClick={() => navigate("/profile")}>
                <img src="client/public/user_profile.svg"></img>
-               <p>{'nome usuario'}</p>
+               <p className='usuario'>{userData?.user}</p>
             </div>
 
             <div onClick={() => {sessionStorage.removeItem('token') || navigate("/login")}}>
