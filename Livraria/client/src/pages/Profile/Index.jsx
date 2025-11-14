@@ -3,8 +3,7 @@ import api from "../../services/api"
 import { useEffect, useState } from "react"
 import { useNavigate, Link  } from "react-router-dom";
 import Header from "../../components/Header"
-import { TextField } from '@mui/material'
-import { Button } from 'react-bootstrap';
+import { TextField, Button } from '@mui/material'
 import SVG_Back from '../../../public/back.svg'
 
 function Profile() {
@@ -113,34 +112,30 @@ function Profile() {
       <>
          <Header/>
          <main className="main main-profile">
-            <div className="titulo centralizar">
-               <div className="grid centralizar">
+            <div className="conteudo">
+               <div className="titulo">
+                  {/* <div className="grid centralizar"> */}
                   <Link to={-1}><img className="svg" src={SVG_Back}/></Link>
                   <span>Alterar Cadastro</span>
+                  <div/>
                </div>
+               
+               <form className="profile-form" onSubmit={handleSubmit}>
+                  <div className="profile-inputs">
+                     <div className="profile-alterarFoto"> 
+                     <div className="profile-image" onClick={handlePhoto}>
+                        <img src={imagePreview || profilePhoto || 'client/public/user_profile.svg'} alt='Foto de Perfil' className="profile-photo"/>
+                        <input type="file" name="image" accept="image/*" hidden />
+                     </div>
+
+                     </div>
+                     <TextField variant="outlined" type="text" value={username} placeholder='Nome' onChange={(e) => {setUsername(e.target.value)}}/>
+                     <TextField variant="outlined" type="text" value={email} placeholder='Email' onChange={(e) => {setEmail(e.target.value)}}/>
+                     <TextField variant="outlined" type="text" value={password} placeholder='Senha' onChange={(e) => {setPassword(e.target.value)}}/>
+                     <Button variant="outlined">Alterar</Button>
+                  </div>
+               </form>
             </div>
-
-
-            
-            <form className="profile-form" onSubmit={handleSubmit}>
-               <div className="profile-alterarFoto">
-                  <div className="profile-image" onClick={handlePhoto}>
-                     <img src={imagePreview || profilePhoto || 'client/public/user_profile.svg'} alt='Foto de Perfil' className="profile-photo"/>
-                     <input type="file" name="image" accept="image/*" hidden />
-                  </div>
-
-                  <div>
-                     <span>Alterar a foto</span>
-                  </div>
-               </div>
-
-               <div className="profile-inputs">
-                  <TextField variant="outlined" type="text" value={username} placeholder='Nome' onChange={(e) => {setUsername(e.target.value)}}/>
-                  <TextField variant="outlined" type="text" value={email} placeholder='Email' onChange={(e) => {setEmail(e.target.value)}}/>
-                  <TextField variant="outlined" type="text" value={password} placeholder='Senha' onChange={(e) => {setPassword(e.target.value)}}/>
-                  <Button variant="success">Alterar</Button>
-               </div>
-            </form>
          </main>
       </>
    );

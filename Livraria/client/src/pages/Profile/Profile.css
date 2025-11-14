@@ -4,7 +4,15 @@ h1 {
 }
 
 .main-profile {
+   display: flex;
    flex-direction: column;
+
+
+   .conteudo {
+      
+      width: 60vw;
+      min-width: 600px;
+   }
 
    .centralizar {
       align-items: center;
@@ -19,10 +27,12 @@ h1 {
    }
    
    .titulo {
-      background-color: rgba(255, 255, 255, 0.3);
-      width: 70%;
-      margin: 10px;
-      padding: 3vh 0px;
+      display: flex;
+      background-color: rgba(255, 255, 255);
+      border-bottom: 3px solid #1e3d66;
+      padding: 2vh 3vw;
+      align-items: center;
+      justify-content: space-between;
       
       span {
          letter-spacing: 2px;
@@ -38,18 +48,12 @@ h1 {
 
 
 .profile-form {
-   background-color: lightgray;
-   height: 60vh;
-   border-radius: 15px;
-   box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.2);
-}
-
-.profile-form {
    display: flex;
    justify-content: space-around;
-   width: 50vw;
-   max-width: 800px;
-   padding: 50px;
+   background-color: rgb(255, 255, 255);
+   height: 60vh;
+   box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.2);
+   padding: 5vh 3vw;
 }
 
 .profile-alterarFoto {
