@@ -1,6 +1,6 @@
-import { useState } from 'react' // useState > Criação de variavel dinamica que será atualizada durante o projeto
 import "./Login.css"
 import api from "../../services/api"
+import { useState } from 'react' // useState > Criação de variavel dinamica que será atualizada durante o projeto
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { TextField, Button } from '@mui/material';
@@ -53,12 +53,12 @@ function Login() {
             </div>
             <form className='form-login' onSubmit={handleLogin}>
                <div className='grupos'>
-                  <TextField variant="outlined" className='campos' type="email" placeholder='Digite o e-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}></TextField>
+                  <TextField variant="outlined" className='campos' type="email" placeholder='Digite o seu e-mail' value={email} onChange={(e) => {setEmail(e.target.value)}}></TextField>
                   <TextField variant="outlined" className='campos' type="password" placeholder='Digite a senha' value={password} onChange={(e) => {setPassword(e.target.value)}}></TextField>
                   <Button type='submit' className='campos'>Entrar</Button>
                </div>
             </form>
-         <span>Não possui cadastro? <a href='/register'>Fazer cadastro</a></span> 
+            <span>Não possui cadastro? <a href='/register'>Fazer cadastro</a></span> 
          </div>
       </main>
    )

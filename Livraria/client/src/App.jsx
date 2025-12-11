@@ -2,12 +2,12 @@ import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-toastify/ReactToastify.css';
 
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import ProtectedRouter from './helpers/protectedRouter'
 
-import Login from "./pages/Login"
-import Register from "./pages/Register"
+import Login from "./pages/Login/Login"
+import Register from "./pages/Login/Register"
 import Home from "./pages/Home"
 import Admin from "./pages/Admin"
 import RegisterBook from "./pages/RegisterBook"
