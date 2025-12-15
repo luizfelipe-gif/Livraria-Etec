@@ -1,7 +1,7 @@
 import "./Home.css"
 import api from "../../services/api"
-import { useNavigate  } from "react-router-dom";
 import Header from "../../components/Header/"
+import { useNavigate  } from "react-router-dom";
 
 function Home() {
 
@@ -12,7 +12,7 @@ function Home() {
          </head>
          <Header/>
          <main className="main main-home">
-            <h1>conteudo</h1>
+            <h1>(Carrossel de livros)</h1>
          </main>
       </>
    )

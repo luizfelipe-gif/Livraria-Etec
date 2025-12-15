@@ -1,14 +1,14 @@
 import "./Admin.css"
 import api from "../../services/api"
-import { useNavigate  } from "react-router-dom";
 import Header from "../../components/Header/"
+import { useNavigate  } from "react-router-dom";
 
 function Admin() {
 
    return (
       <>
          <head>
-            <title>Admin</title>
+            <title>Admin - WikiLivros</title>
          </head>
          <Header/>
          <main>

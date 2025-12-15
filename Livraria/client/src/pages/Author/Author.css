@@ -1,21 +1,25 @@
-/* .content {
-  justify-content: center;
-  align-items: center;
-}
-
-div {
-  margin: 10px;
-}
-
-.campos {
+.content {
    display: flex;
-   justify-content: space-between;
-}
+   flex-direction: column;
 
-label {
-   align-self: flex-start;
-}
+   .content-author {
+      width: 75vw;
+      min-width: 800px;
+   } 
 
-input {
-   margin: auto;
-} */
+   table {
+      height: 100%;
+      width: 100%;
+      border: solid 1px red;
+
+
+      thead {
+         background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      tbody {
+         
+      }
+   }
+
+}

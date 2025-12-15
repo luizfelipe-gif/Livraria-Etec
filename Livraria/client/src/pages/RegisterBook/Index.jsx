@@ -1,14 +1,14 @@
 import "./RegisterBook.css"
 import api from "../../services/api"
-import { useNavigate  } from "react-router-dom";
 import Header from "../../components/Header/"
+import { useNavigate  } from "react-router-dom";
 
 function RegisterBook() {
 
    return (
       <>
          <head>
-            <title>RegisterBook</title>
+            <title>RegisterBook - WikiLivros</title>
          </head>
          <Header/>
          <main>
