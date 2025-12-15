@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 const secret = "CriptographyKey";
 
 function generateToken(payload) {
-    return jwt.sign(payload, secret, {expiresIn: 60*3});
+    return jwt.sign(payload, secret, {expiresIn: 60*60});
 }
 
 function authenticate(request, response, next) {
