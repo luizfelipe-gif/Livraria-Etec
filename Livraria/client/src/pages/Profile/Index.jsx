@@ -1,42 +1,35 @@
 import "./Profile.css"
 import api from "../../services/api"
-import { useEffect, useState } from "react"
-import { useNavigate, Link  } from "react-router-dom";
 import Header from "../../components/Header"
-import { TextField, Button } from '@mui/material'
-import SVG_Back from '../../../public/back.svg'
+import { useNavigate  } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { TextField, Button  } from '@mui/material'
+import { getUser } from "../../helpers/auth";
+import { toast } from 'react-toastify';
+
+import { IoArrowBackSharp } from "react-icons/io5";
+import { jwtDecode } from "jwt-decode";
 
 function Profile() {
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
-   const [username, setUsername] = useState('');
-   const [role, setRole] = useState('');
+   const navigate = useNavigate();
+
+   const [modoEdicao, setModoEdicao] = useState(false);
+
    const [imagePreview, setImagePreview] = useState(null);
    const [profilePhoto, setProfilePhoto] = useState(null);
 
-   useEffect(() => {
-      async function getUserProfile() {
-         try {
-            const token = sessionStorage.getItem('token');
-   
-            const response = await api.get('/user/profile', {
-               headers: {Authorization: `Bearer ${token}`}
-            });
-   
-            const data = response.data;
-   
-            setEmail(data.users[0].email || '');
-            setUsername(data.users[0].name || '');
-            setPassword(data.users[0].password || '');
-            setRole(data.users[0].typeUser || '');
-            setProfilePhoto(data.profilePhoto.url_photo_profile);
-         } catch (error) {
-            console.log('error', error); // toast. error
-         }
-      }
+   const [dados, setDados] = useState({
+      userId: '',
+      name: '',
+      email: '',
+      createdAt: ''
+   });
 
-      getUserProfile();
-   }, [])
+   useEffect(() => {
+      const response = getUser();
+      setDados({userId: response.userId, name: response.user, email: response.email, createdAt: response.createdAt});
+   }, []);
+
 
    function handlePhoto(e) {
       const { name, files } = e.target;
@@ -45,26 +38,79 @@ function Profile() {
          const selectedImage = files[0];
          setImagePreview(URL.createObjectURL(files[0]));
          saveImage(selectedImage);
-      }
+      };
    };
+   
+
+   useEffect(() => {
+      async function getUserProfile() {
+         try {
+            const token = sessionStorage.getItem('token');
+            const response = await api.get(`/user/${dados?.userId}`, {
+               headers: {Authorization: `Bearer ${token}`}
+            });
+
+            console.log("resposta", response)
+
+            const imagemURL = response?.data?.response?.url_photo_profile;
+
+            if (imagemURL) {
+               setProfilePhoto(imagemURL);
+            }
+         } 
+         catch (error) {
+            console.log(error);
+            toast.error(error, {
+               position: "top-right",
+               autoClose: 3000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "light",
+            });
+         };
+      };
+      getUserProfile();
+   }, [dados.userId]);
+
 
    async function saveImage(selectedImage) {
       if (!selectedImage) {
-         alert('Selecione uma iamgem antes de enviar.');
+         toast.error('Selecione uma imagem antes de enviar.', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
          return;
-      }
+      };
 
       try {
          const token = sessionStorage.getItem('token');
-         if (!token) {
-            alert('Token inválido ou expirado. Faça login novamente.');
+         if (!token) { // *** Verificar se pode pegar o erro vindo do back e exibir aqui
+            toast.error('Token inválido ou expirado. Faça login novamente.', {
+               position: "top-right",
+               autoClose: 3000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: true,
+               draggable: true,
+               progress: undefined,
+               theme: "light",
+            });
             return;
-         }
+         };
 
          const formData = new FormData();
          formData.append('uploads', selectedImage);
 
-         await api.post('upload', formData, {
+         await api.post('/upload', formData, {
             headers: {
                'Authorization': `Bearer ${token}`,
                'Content-Type': 'multipart/form-data',
@@ -80,12 +126,10 @@ function Profile() {
             draggable: true,
             progress: undefined,
             theme: "light",
-            transition: Bounce,
          });
-
-      } catch (error) {
-         console.log('Erro ao enviar a imagem: ', error);
-
+      } 
+      catch (error) {
+         console.log(error);
          toast.error('Erro ao enviar a imagem. Tente novamente.', {
             position: "top-right",
             autoClose: 3000,
@@ -95,46 +139,108 @@ function Profile() {
             draggable: true,
             progress: undefined,
             theme: "light",
-            transition: Bounce,
          });
       }
    }
 
+
+
    async function handleSubmit(e) {
       e.preventDefault();
 
-   }
+      const token = sessionStorage.getItem('token');
+      if (!token) {
+         toast.error('Token inválido ou expirado. Faça login novamente.', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
+         return;
+      };
+
+      const decoded = jwtDecode(token);
+      const userId = decoded.userId;
+
+      const payload = {
+         id: userId,
+         name: name,
+         email: email,
+      };
+
+      try {
+         await api.put('/user', payload, {
+            headers: {
+               'Authorization': `Bearer ${token}`,
+            }
+         });
+
+         toast.success('Dados atualizados com sucesso!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
+      }
+      catch (error) {
+         console.log(error);
+         toast.error('Erro ao atualizar o perfil.', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+         });
+      };
+   };
 
    return (
-      <head>
-         <title>Profile</title>
-      </head>,
       <>
+         <head>
+            <title>Meu perfil - WikiLivros</title>
+         </head>
          <Header/>
-         <main className="main main-profile">
-            <div className="conteudo">
-               <div className="titulo">
-                  {/* <div className="grid centralizar"> */}
-                  <Link to={-1}><img className="svg" src={SVG_Back}/></Link>
-                  <span>Alterar Cadastro</span>
-                  <div/>
-               </div>
-               
-               <form className="profile-form" onSubmit={handleSubmit}>
-                  <div className="profile-inputs">
-                     <div className="profile-alterarFoto"> 
-                     <div className="profile-image" onClick={handlePhoto}>
-                        <img src={imagePreview || profilePhoto || 'client/public/user_profile.svg'} alt='Foto de Perfil' className="profile-photo"/>
-                        <input type="file" name="image" accept="image/*" hidden />
+         <main>
+            <div className="content">
+               <div className="content-profile">
+                  <div className="titulo">
+                     <div className="svg" onClick={() => navigate(-1)}>
+                        <IoArrowBackSharp/>
                      </div>
-
+                     <div className="pagina">
+                        <span>Alterar Cadastro</span>
                      </div>
-                     <TextField variant="outlined" type="text" value={username} placeholder='Nome' onChange={(e) => {setUsername(e.target.value)}}/>
-                     <TextField variant="outlined" type="text" value={email} placeholder='Email' onChange={(e) => {setEmail(e.target.value)}}/>
-                     <TextField variant="outlined" type="text" value={password} placeholder='Senha' onChange={(e) => {setPassword(e.target.value)}}/>
-                     <Button variant="outlined">Alterar</Button>
                   </div>
-               </form>
+                  
+                  <form className="profile-content" onSubmit={handleSubmit}>
+                     <div className="profile-inputs">
+                        <div className="profile-image">
+                           <div onClick={handlePhoto} className="image"> 
+                              <img src={imagePreview || profilePhoto || '/client/public/user_profile.svg'} alt='Foto de Perfil' className="profile-photo" style={{ borderRadius: '50%', objectFit: 'cover' }}/>
+                           </div>
+                           <input type="file" name="image" accept="image/*" onClick={handlePhoto}></input>
+                           <Button variant="outlined" onClick={handlePhoto}>Mudar foto</Button>
+                        </div>
+                        <div className="profile-form">
+                           <TextField name='name' value={dados.name} label='Nome' variant="outlined" />
+                           <TextField name='email' value={dados.email} label='Email' variant="outlined" />
+                           <TextField disabled name='createdAt' value={new Date(dados.createdAt).toLocaleString('pt-br')} label='Data de Cadastro'variant="outlined" />
+                           <Button variant="outlined" onClick={() => {setModoEdicao(!modoEdicao)}}>Alterar cadastro</Button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
             </div>
          </main>
       </>
